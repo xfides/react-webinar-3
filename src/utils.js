@@ -26,3 +26,10 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function generateItemCode(){
+  return ++generateItemCode.count
+}
+
+generateItemCode.count = 0
+generateItemCode.reset = () => {generateItemCode.count = 0}
