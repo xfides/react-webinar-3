@@ -1,36 +1,44 @@
-import {memo, useCallback} from 'react';
+import { memo, useCallback } from 'react';
+import { cn as bem } from '@bem-react/classname';
 import propTypes from 'prop-types';
 import numberFormat from '../../utils/number-format';
-import {cn as bem} from '@bem-react/classname';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 function ItemBasket(props) {
-
+  const { onRemove = () => {}, labelCurr = '₽', labelUnit = 'шт', labelDelete = 'Удалить' } = props;
   const cn = bem('ItemBasket');
 
   const callbacks = {
-    onRemove: (e) => props.onRemove(props.item._id)
+    onRemove: e => onRemove(props.item._id),
   };
 
   return (
     <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       <div className={cn('title')}>
-        {props.link
-          ? <Link to={props.link} onClick={props.onLink}>{props.item.title}</Link>
-          : props.item.title}
+        {props.link ? (
+          <Link to={props.link} onClick={props.onLink}>
+            {props.item.title}
+          </Link>
+        ) : (
+          props.item.title
+        )}
       </div>
       <div className={cn('right')}>
-        <div className={cn('cell')}>{numberFormat(props.item.price)} {props.labelCurr}</div>
-        <div className={cn('cell')}>{numberFormat(props.item.amount || 0)} {props.labelUnit}</div>
         <div className={cn('cell')}>
-          <button onClick={callbacks.onRemove}>{props.labelDelete}</button>
+          {numberFormat(props.item.price)} {labelCurr}
+        </div>
+        <div className={cn('cell')}>
+          {numberFormat(props.item.amount || 0)} {labelUnit}
+        </div>
+        <div className={cn('cell')}>
+          <button onClick={callbacks.onRemove}>{labelDelete}</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 ItemBasket.propTypes = {
@@ -38,7 +46,7 @@ ItemBasket.propTypes = {
     _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     title: PropTypes.string,
     price: PropTypes.number,
-    amount: PropTypes.number
+    amount: PropTypes.number,
   }).isRequired,
   link: PropTypes.string,
   onLink: PropTypes.func,
@@ -46,14 +54,6 @@ ItemBasket.propTypes = {
   labelCurr: PropTypes.string,
   labelDelete: PropTypes.string,
   labelUnit: PropTypes.string,
-}
-
-ItemBasket.defaultProps = {
-  onRemove: () => {
-  },
-  labelCurr: '₽',
-  labelUnit: 'шт',
-  labelDelete: 'Удалить',
-}
+};
 
 export default memo(ItemBasket);

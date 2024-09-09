@@ -12,7 +12,7 @@ export default function simplifyErrors(issues = {}) {
     if (result[key]) {
       result[key].push(issue.message);
     } else {
-      result[key] = [issue.message]
+      result[key] = [issue.message];
     }
   }
   return result;

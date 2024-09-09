@@ -23,17 +23,17 @@ let config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [{loader: 'babel-loader'}],
+        use: [{ loader: 'babel-loader' }],
       },
       // Правила обработки подключаемых файлов
       {
         test: /\.css$/,
         use: [
-          {loader: MiniCssExtractPlugin.loader, options: {}},
-          {loader: 'css-loader', options: {url: true, import: true}},
-        ]
+          { loader: MiniCssExtractPlugin.loader, options: {} },
+          { loader: 'css-loader', options: { url: true, import: true } },
+        ],
       },
-    ]
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin(), // Плагин для вытаскивания собранных стилей в отдельный файл
@@ -49,7 +49,7 @@ let config = {
       },
     }),
   ],
-}
+};
 
 if (process.env.NODE_ENV === 'development') {
   config.devtool = 'inline-source-map';
@@ -57,13 +57,14 @@ if (process.env.NODE_ENV === 'development') {
     static: path.join(__dirname, 'dist'),
     port: 8010,
     historyApiFallback: true,
-    proxy: {
-      '/api/**': {
-        target: 'http://example.front.ylab.io',
+    proxy: [
+      {
+        context: '/api/**',
+        target: 'http://query.rest',
         secure: false,
         changeOrigin: true,
-      }
-    }
+      },
+    ],
   };
 }
 

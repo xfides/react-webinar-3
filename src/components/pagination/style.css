@@ -27,14 +27,14 @@
 }
 
 .Pagination-item:hover {
-  background: #E1E1E1;
+  background: #e1e1e1;
 }
 
 .Pagination-item_active,
 .Pagination-item_active:hover,
 .Pagination-item_active a,
 .Pagination-item_active a:hover {
-  background: #0087E9;
+  background: #0087e9;
   color: #fff;
 }
 
@@ -42,7 +42,5 @@
 .Pagination-item_split:hover {
   background: transparent;
   cursor: default;
-  color: #CCCCCC;
+  color: #cccccc;
 }
-
-

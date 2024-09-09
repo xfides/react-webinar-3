@@ -1,15 +1,14 @@
 class APIService {
-
   /**
    * @param services {Services} Менеджер сервисов
    * @param config {Object}
    */
   constructor(services, config = {}) {
     this.services = services;
-    this.config = config
+    this.config = config;
     this.defaultHeaders = {
       'Content-Type': 'application/json',
-    }
+    };
   }
 
   /**
@@ -20,14 +19,14 @@ class APIService {
    * @param options
    * @returns {Promise<{}>}
    */
-  async request({url, method = 'GET', headers = {}, ...options}) {
+  async request({ url, method = 'GET', headers = {}, ...options }) {
     if (!url.match(/^(http|\/\/)/)) url = this.config.baseUrl + url;
     const res = await fetch(url, {
       method,
-      headers: {...this.defaultHeaders, ...headers},
+      headers: { ...this.defaultHeaders, ...headers },
       ...options,
     });
-    return {data: await res.json(), status: res.status, headers: res.headers};
+    return { data: await res.json(), status: res.status, headers: res.headers };
   }
 
   /**

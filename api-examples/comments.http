@@ -1,12 +1,12 @@
 # Комментрии к товару
 
-GET http://example.front.ylab.io/api/v1/comments?fields=items(_id,text,dateCreate,author(profile(name)),parent(_id,_type),isDeleted),count&limit=*&search[parent]=65f8322cf3360f03347a6be8
+GET http://query.rest/api/v1/comments?fields=items(_id,text,dateCreate,author(profile(name)),parent(_id,_type),isDeleted),count&limit=*&search[parent]=65f8322cf3360f03347a6be8
 
-# Остальные методы в http://example.front.ylab.io/api/v1/docs/ (http://localhost:8010/api/v1/docs/)
+# Остальные методы в http://query.rest/api/v1/docs/ (http://localhost:8010/api/v1/docs/)
 
 ###
 # Создание первого коммента
-POST http://example.front.ylab.io/api/v1/comments
+POST http://query.rest/api/v1/comments
 Content-Type: application/json
 X-Token: 0800a69a1a04cef7e70e4a69f22d5b9f029df447f5306a095278da5a51f14171
 
@@ -18,7 +18,7 @@ X-Token: 0800a69a1a04cef7e70e4a69f22d5b9f029df447f5306a095278da5a51f14171
 
 ###
 # Создание ответа на коммент коммента
-POST http://example.front.ylab.io/api/v1/comments
+POST http://query.rest/api/v1/comments
 Content-Type: application/json
 X-Token: 0800a69a1a04cef7e70e4a69f22d5b9f029df447f5306a095278da5a51f14171
 

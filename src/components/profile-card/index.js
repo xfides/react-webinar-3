@@ -1,9 +1,9 @@
-import {memo} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
-import {cn as bem} from '@bem-react/classname';
+import { cn as bem } from '@bem-react/classname';
 import './style.css';
 
-function ProfileCard({data}) {
+function ProfileCard({ data }) {
   const cn = bem('ProfileCard');
 
   return (
@@ -22,16 +22,11 @@ function ProfileCard({data}) {
         <div className={cn('value')}>{data?.email}</div>
       </div>
     </div>
-  )
+  );
 }
 
 ProfileCard.propTypes = {
   data: PropTypes.object.isRequired,
 };
-
-ProfileCard.defaultProps = {
-  onAdd: () => {
-  }
-}
 
 export default memo(ProfileCard);

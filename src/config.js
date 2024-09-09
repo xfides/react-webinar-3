@@ -11,13 +11,13 @@ const config = {
     modules: {
       session: {
         // Названия токена в АПИ
-        tokenHeader: 'X-Token'
-      }
-    }
+        tokenHeader: 'X-Token',
+      },
+    },
   },
   api: {
-    baseUrl: ''
-  }
-}
+    baseUrl: '',
+  },
+};
 
 export default config;
