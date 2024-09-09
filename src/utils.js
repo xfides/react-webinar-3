@@ -33,3 +33,18 @@ export function generateItemCode(){
 
 generateItemCode.count = 0
 generateItemCode.reset = () => {generateItemCode.count = 0}
+
+export function pluralRuPhrase ({ phrase, count, options = {} }) {
+  const pr = new Intl.PluralRules('ru-RU', { type: 'cardinal' })
+
+  let { one, few, many } = options
+  const suffixes = new Map([
+    ['one', (one ? one : '')],
+    ['few', (few ? few : 'а')],
+    ['many', (many ? many : '')],
+  ])
+
+  const rule = pr.select(count)
+  const suffix = suffixes.get(rule)
+  return `${phrase}${suffix}`
+}

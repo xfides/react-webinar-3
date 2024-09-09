@@ -1,6 +1,13 @@
 import React from 'react';
-import { createElement } from './utils.js';
+import {pluralRuPhrase } from './utils.js'
 import './styles.css';
+
+function getHighlightCountInfo (highlightCount) {
+  if (!highlightCount) return ''
+  const endingPhrase = pluralRuPhrase({ phrase: 'раз', count: highlightCount })
+
+  return `Выделяли ${highlightCount} ${endingPhrase}`
+}
 
 /**
  * Приложение
@@ -28,6 +35,9 @@ function App({ store }) {
               >
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">{item.title}</div>
+                <div className="Item-title">
+                  {getHighlightCountInfo(item.highlightCount)}
+                </div>
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
