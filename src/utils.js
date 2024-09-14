@@ -27,12 +27,20 @@ export function createElement(name, props = {}, ...children) {
   return element;
 }
 
-export function generateItemCode(){
+export function generateItemCode () {
+  if (generateItemCode.count === NOT_EXIST) {
+    throw new Error('Please set initial value (seed) for generating values')
+  }
+
   return ++generateItemCode.count
 }
 
-generateItemCode.count = 0
-generateItemCode.reset = () => {generateItemCode.count = 0}
+const NOT_EXIST = Symbol('NOT_EXIST')
+generateItemCode.count = NOT_EXIST
+
+generateItemCode.setSeed = (seed) => {
+  generateItemCode.count = seed
+}
 
 export function pluralRuPhrase ({ phrase, count, options = {} }) {
   const pr = new Intl.PluralRules('ru-RU', { type: 'cardinal' })

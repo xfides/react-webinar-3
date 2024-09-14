@@ -12,6 +12,18 @@ const initialData = {
   ],
 }
 
+generateItemCode.setSeed(
+  (function generateSeed () {
+    const listItemWithMaxCode = initialData.list.reduce(
+      (listItemPrev, listItemNext) => listItemPrev.code > listItemNext.code
+        ? listItemPrev
+        : listItemNext,
+    )
+
+    return listItemWithMaxCode.code
+  }()),
+)
+
 const normalizedItems = initialData.list.map((oneItem) => {
   return {
     ...oneItem,
