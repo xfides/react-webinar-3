@@ -6,7 +6,7 @@ function getHighlightCountInfo (highlightCount) {
   if (!highlightCount) return ''
   const endingPhrase = pluralRuPhrase({ phrase: 'раз', count: highlightCount })
 
-  return `Выделяли ${highlightCount} ${endingPhrase}`
+  return ` | Выделяли ${highlightCount} ${endingPhrase}`
 }
 
 /**
@@ -34,9 +34,8 @@ function App({ store }) {
                 onClick={() => store.selectItem(item.code)}
               >
                 <div className="Item-code">{item.code}</div>
-                <div className="Item-title">{item.title}</div>
                 <div className="Item-title">
-                  {getHighlightCountInfo(item.highlightCount)}
+                  {item.title} {getHighlightCountInfo(item.highlightCount)}
                 </div>
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
