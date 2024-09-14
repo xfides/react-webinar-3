@@ -2,13 +2,13 @@ import { generateItemCode } from './utils'
 
 const initialData = {
   list: [
-    { title: 'Название элемента' },
-    { title: 'Некий объект' },
-    { title: 'Заголовок' },
-    { title: 'Очень длинное название элемента из семи слов' },
-    { title: 'Запись' },
-    { title: 'Шестая запись' },
-    { title: 'Седьмая запись' },
+    { code: 1, title: 'Название элемента' },
+    { code: 2, title: 'Некий объект' },
+    { code: 3, title: 'Заголовок' },
+    { code: 4, title: 'Очень длинное название элемента из семи слов' },
+    { code: 5, title: 'Запись' },
+    { code: 6, title: 'Шестая запись' },
+    { code: 7, title: 'Седьмая запись' },
   ],
 }
 
@@ -16,7 +16,6 @@ const normalizedItems = initialData.list.map((oneItem) => {
   return {
     ...oneItem,
     selected: false,
-    code: generateItemCode(),
     highlightCount: 0,
   }
 })
