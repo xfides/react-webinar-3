@@ -1,4 +1,4 @@
-import { generateItemCode } from './utils'
+import {generateItemCode} from './utils';
 
 /**
  * Хранилище состояния приложения
@@ -43,7 +43,7 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItem () {
+  addItem() {
     this.setState({
       ...this.state,
       list: [
@@ -55,7 +55,7 @@ class Store {
           highlightCount: 0,
         },
       ],
-    })
+    });
   }
 
   /**
@@ -73,23 +73,23 @@ class Store {
    * Выделение записи по коду
    * @param code
    */
-  selectItem (code) {
+  selectItem(code) {
     this.setState({
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
-          item.selected = !item.selected
+          item.selected = !item.selected;
         }
         if (item.code !== code) {
-          item.selected = false
+          item.selected = false;
         }
         if (item.selected) {
-          item.highlightCount++
+          item.highlightCount++;
         }
 
-        return item
+        return item;
       }),
-    })
+    });
   }
 }
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { createElement } from './utils.js';
+import {createRoot} from 'react-dom/client';
 import App from './app.js';
 import Store from './store.js';
-import { initialState } from './initialState'
+import {initialState} from './initialState';
 
 const store = new Store(initialState);
 

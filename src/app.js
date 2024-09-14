@@ -1,12 +1,12 @@
 import React from 'react';
-import {pluralRuPhrase } from './utils.js'
+import {pluralRuPhrase} from './utils.js';
 import './styles.css';
 
-function getHighlightCountInfo (highlightCount) {
-  if (!highlightCount) return ''
-  const endingPhrase = pluralRuPhrase({ phrase: 'раз', count: highlightCount })
+function getHighlightCountInfo(highlightCount) {
+  if (!highlightCount) return '';
+  const endingPhrase = pluralRuPhrase({phrase: 'раз', count: highlightCount});
 
-  return ` | Выделяли ${highlightCount} ${endingPhrase}`
+  return ` | Выделяли ${highlightCount} ${endingPhrase}`;
 }
 
 /**
@@ -14,7 +14,7 @@ function getHighlightCountInfo (highlightCount) {
  * @param store {Store} Состояние приложения
  * @returns {React.ReactElement}
  */
-function App({ store }) {
+function App({store}) {
   const list = store.getState().list;
 
   return (
@@ -38,12 +38,12 @@ function App({ store }) {
                   {item.title} {getHighlightCountInfo(item.highlightCount)}
                 </div>
                 <div className="Item-actions">
-                  <button onClick={
-                    (event) => {
+                  <button
+                    onClick={event => {
                       event.stopPropagation();
-                      store.deleteItem(item.code)
-                    }
-                  }>
+                      store.deleteItem(item.code);
+                    }}
+                  >
                     Удалить
                   </button>
                 </div>

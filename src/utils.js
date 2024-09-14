@@ -27,32 +27,32 @@ export function createElement(name, props = {}, ...children) {
   return element;
 }
 
-export function generateItemCode () {
+export function generateItemCode() {
   if (generateItemCode.count === NOT_EXIST) {
-    throw new Error('Please set initial value (seed) for generating values')
+    throw new Error('Please set initial value (seed) for generating values');
   }
 
-  return ++generateItemCode.count
+  return ++generateItemCode.count;
 }
 
-const NOT_EXIST = Symbol('NOT_EXIST')
-generateItemCode.count = NOT_EXIST
+const NOT_EXIST = Symbol('NOT_EXIST');
+generateItemCode.count = NOT_EXIST;
 
-generateItemCode.setSeed = (seed) => {
-  generateItemCode.count = seed
-}
+generateItemCode.setSeed = seed => {
+  generateItemCode.count = seed;
+};
 
-export function pluralRuPhrase ({ phrase, count, options = {} }) {
-  const pr = new Intl.PluralRules('ru-RU', { type: 'cardinal' })
+export function pluralRuPhrase({phrase, count, options = {}}) {
+  const pr = new Intl.PluralRules('ru-RU', {type: 'cardinal'});
 
-  let { one, few, many } = options
+  let {one, few, many} = options;
   const suffixes = new Map([
-    ['one', (one ? one : '')],
-    ['few', (few ? few : 'а')],
-    ['many', (many ? many : '')],
-  ])
+    ['one', one ? one : ''],
+    ['few', few ? few : 'а'],
+    ['many', many ? many : ''],
+  ]);
 
-  const rule = pr.select(count)
-  const suffix = suffixes.get(rule)
-  return `${phrase}${suffix}`
+  const rule = pr.select(count);
+  const suffix = suffixes.get(rule);
+  return `${phrase}${suffix}`;
 }
