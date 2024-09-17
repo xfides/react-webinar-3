@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import Item from '../item';
 import './style.css';
 
-function List({ list, onDeleteItem, onSelectItem }) {
+function List(rawProps) {
+  const props = {
+    list: rawProps.list,
+    onDeleteItem: rawProps.onDeleteItem ? rawProps.onDeleteItem : () => {},
+    onSelectItem: rawProps.onSelectItem ? rawProps.onSelectItem : () => {},
+  };
+
   return (
     <div className="List">
-      {list.map(item => (
+      {props.list.map(item => (
         <div key={item.code} className="List-item">
-          <Item item={item} onDelete={onDeleteItem} onSelect={onSelectItem} />
+          <Item item={item} onDelete={props.onDeleteItem} onSelect={props.onSelectItem} />
         </div>
       ))}
     </div>
@@ -23,11 +29,6 @@ List.propTypes = {
   ).isRequired,
   onDeleteItem: PropTypes.func,
   onSelectItem: PropTypes.func,
-};
-
-List.defaultProps = {
-  onDeleteItem: () => {},
-  onSelectItem: () => {},
 };
 
 export default React.memo(List);
