@@ -39,50 +39,89 @@ class Store {
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
   }
-
-  /**
-   * Добавление новой записи
-   */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, { code: generateCode(), title: 'Новая запись' }],
-    });
-  }
-
-  /**
-   * Удаление записи по коду
-   * @param code
-   */
-  deleteItem(code) {
-    this.setState({
-      ...this.state,
-      // Новый список, в котором не будет удаляемой записи
-      list: this.state.list.filter(item => item.code !== code),
-    });
-  }
-
-  /**
-   * Выделение записи по коду
-   * @param code
-   */
-  selectItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
-          return {
-            ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
-          };
-        }
-        // Сброс выделения если выделена
-        return item.selected ? { ...item, selected: false } : item;
-      }),
-    });
-  }
 }
 
-export default Store;
+const store = new Store({
+  list: [
+    { code: generateCode(), title: 'Название товара', price: 100.0 },
+    { code: generateCode(), title: 'Книга про React', price: 770 },
+    { code: generateCode(), title: 'Конфета', price: 33 },
+    { code: generateCode(), title: 'Трактор', price: 7955320 },
+    { code: generateCode(), title: 'Телефон iPhone XIXV', price: 120000 },
+    { code: generateCode(), title: 'Карандаши цветные', price: 111 },
+    { code: generateCode(), title: 'Товар сюрприз', price: 0 },
+  ],
+  cart: {},
+  modal: {
+    isOpen: false,
+  },
+});
+
+export const ACTION = {
+  toggleModal() {
+    const oldState = store.getState();
+    const oldModal = oldState.modal;
+    const newModal = { isOpen: !oldModal.isOpen };
+
+    const newState = {
+      ...oldState,
+      modal: newModal,
+    };
+
+    store.setState(newState);
+  },
+
+  addGoodToCart(codeOfGood) {
+    const oldState = store.getState();
+    const oldCart = oldState.cart;
+    const newGoodInCart = {
+      code: codeOfGood,
+      count: oldCart[codeOfGood]?.count ? ++oldCart[codeOfGood].count : 1,
+    };
+
+    const newState = {
+      ...oldState,
+      cart: {
+        ...oldCart,
+        [codeOfGood]: newGoodInCart,
+      },
+    };
+
+    store.setState(newState);
+  },
+
+  removeGoodFromCart(codeOfGood) {
+    const oldState = store.getState();
+    const oldCart = oldState.cart;
+    delete oldCart[codeOfGood];
+
+    const newState = {
+      ...oldState,
+      cart: { ...oldCart },
+    };
+
+    store.setState(newState);
+  },
+
+  buildCartInfo() {
+    const oldState = store.getState();
+    const oldCart = oldState.cart;
+    const oldListOfGoods = oldState.list;
+    const newGoodsInfo = [];
+
+    for (const infoCartGood of Object.values(oldCart)) {
+      const good = oldListOfGoods.find(good => good.code === infoCartGood.code);
+
+      newGoodsInfo.push({
+        code: good.code,
+        title: good.title,
+        price: good.price,
+        count: infoCartGood.count,
+      });
+    }
+
+    return newGoodsInfo;
+  },
+};
+
+export default store;
