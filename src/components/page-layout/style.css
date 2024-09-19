@@ -7,6 +7,12 @@ body {
 
 button {
   cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid #767676;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 4px;
+  min-width: 76px;
 }
 
 .PageLayout {

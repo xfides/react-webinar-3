@@ -29,11 +29,11 @@ function Modal({ title, modal, children }) {
     <div className={cn({ opened: modal.isOpen })} onClick={ACTION.toggleModal}>
       <div
         className={cn('inner', { opened: modal.isOpen })}
-        onClick={evt => evt.stopPropagation()}
+        onClick={event => event.stopPropagation()}
       >
         <div className={cn('head')}>
-          <h2>{title}</h2>
-          <div className="buttons">
+          <h2 className={cn('title')}>{title}</h2>
+          <div className={cn('controls')}>
             <button onClick={ACTION.toggleModal}>Закрыть</button>
           </div>
         </div>
