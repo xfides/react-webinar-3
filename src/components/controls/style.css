@@ -1,5 +1,20 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.Controls__shortCartInfo {
+  padding: 20px 10px;
+}
+
+.Controls__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 20px 10px;
+}
+
+.Controls__actions button {
+  min-width: 76px;
+  cursor: pointer;
 }
