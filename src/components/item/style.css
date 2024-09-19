@@ -25,4 +25,5 @@
 
 .Item__actions button {
   cursor: pointer;
+  min-width: 76px;
 }
