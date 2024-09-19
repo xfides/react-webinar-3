@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn as bem } from '@bem-react/classname';
+import { bem } from '../../utils';
 import './style.css';
 
 function PageLayout({ children }) {
@@ -17,4 +17,4 @@ PageLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default React.memo(PageLayout);
+export default PageLayout;
