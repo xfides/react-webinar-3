@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import './style.css';
 import { ACTION } from '../../store';
 import { bem } from '../../utils';
+import { PT_ONE_GOOD } from '../../propTypesShare';
 
 function Item({ item }) {
   const addGoodToCart = useCallback(() => {
@@ -24,11 +24,7 @@ function Item({ item }) {
 }
 
 Item.propTypes = {
-  item: PropTypes.shape({
-    code: PropTypes.number,
-    title: PropTypes.string,
-    price: PropTypes.number,
-  }).isRequired,
+  item: PT_ONE_GOOD,
 };
 
 export default React.memo(Item);
