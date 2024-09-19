@@ -1,0 +1,52 @@
+:root {
+  --modalAnimationTime: 200ms;
+}
+
+.Modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity var(--modalAnimationTime);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.Modal--opened {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.Modal__inner {
+  border-radius: 10px;
+  background-color: #fff;
+  max-width: 960px;
+  width: 90%;
+  overflow: hidden;
+  transform: scale(0.5);
+  transition: transform var(--modalAnimationTime);
+}
+
+.Modal__inner--opened {
+  transform: scale(1);
+}
+
+.Modal__head {
+  background: #f5f5f5;
+  padding: 20px 20px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.Modal__head h2 {
+  margin-right: auto;
+}
+
+.Modal__content {
+  padding: 20px 20px 10px;
+}

@@ -5,6 +5,7 @@ import Head from './components/head';
 import PageLayout from './components/page-layout';
 import { PT_CART, PT_MODAL, PT_ONE_GOOD } from './propTypesShare';
 import PropTypes from 'prop-types';
+import Modal from './components/modal';
 
 /**
  * Приложение
@@ -13,13 +14,16 @@ import PropTypes from 'prop-types';
  */
 function App({ store }) {
   const state = store.getState();
-  const { list, cart } = state;
+  const { list, cart, modal } = state;
 
   return (
     <PageLayout>
       <Head title="Приложение на чистом JS" />
       <Controls cart={cart} />
       <List list={list} />
+      <Modal title="Корзина" modal={modal}>
+        Тело модалки
+      </Modal>
     </PageLayout>
   );
 }
