@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import { ACTION } from '../../store';
-import { bem, getTotalCost, plural } from '../../utils';
+import { bem, getTotalCost, numberToCurrency, plural } from '../../utils';
 import { PT_CART } from '../../propTypesShare';
 
 function Controls({ cart }) {
@@ -16,7 +16,9 @@ function Controls({ cart }) {
       <div className={cn('shortCartInfo')}>
         {`В корзине: `}
         <strong>
-          {countOfGoods ? `${countOfGoods} ${normalizeWord} / ${totalCost} Р` : 'пусто'}
+          {countOfGoods
+            ? `${countOfGoods} ${normalizeWord} / ${numberToCurrency(totalCost)}`
+            : 'пусто'}
         </strong>
       </div>
       <div className={cn('actions')}>

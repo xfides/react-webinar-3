@@ -60,3 +60,11 @@ export function getTotalCost(arrOfItems) {
     return totalCost + oneItem.count * oneItem.price;
   }, 0);
 }
+
+export function numberToCurrency(number) {
+  return new Intl.NumberFormat('ru-RU', {
+    style: 'currency',
+    currency: 'Rub',
+    maximumFractionDigits: 0,
+  }).format(number);
+}

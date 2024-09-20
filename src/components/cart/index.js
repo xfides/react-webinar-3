@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import { bem, getTotalCost } from '../../utils';
+import { bem, getTotalCost, numberToCurrency } from '../../utils'
 import { ACTION } from '../../store';
 import CartItem from '../cart-item';
 import { PT_CART } from '../../propTypesShare';
@@ -22,7 +22,7 @@ function Cart({ cart }) {
       ))}
       <div className={cn('total')}>
         <strong>Итого</strong>
-        <strong>{totalCost} Р</strong>
+        <strong>{numberToCurrency(totalCost)}</strong>
       </div>
     </div>
   );

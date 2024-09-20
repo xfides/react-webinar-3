@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
-import { bem } from '../../utils';
+import { bem, numberToCurrency } from '../../utils'
 import { ACTION } from '../../store';
 
 function CartItem({ cartItem }) {
@@ -17,7 +17,7 @@ function CartItem({ cartItem }) {
     <div className={cn()}>
       <div className={cn('code')}>{code}</div>
       <div className={cn('title')}>{title}</div>
-      <div className={cn('price')}>{price}</div>
+      <div className={cn('price')}>{numberToCurrency(price)}</div>
       <div className={cn('count')}>{count} шт</div>
       <div className={cn('actions')}>
         <button onClick={removeGoodFromCart}>Удалить</button>
