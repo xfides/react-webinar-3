@@ -1,4 +1,4 @@
-import { withNaming } from '@bem-react/classname'
+import { withNaming } from '@bem-react/classname';
 
 /**
  * Плюрализация
@@ -53,4 +53,10 @@ export function generateCode2() {
   return generateCode2.value ? ++generateCode2.value : (generateCode2.value = 1);
 }
 
-export const bem = withNaming({ e: '__', m: '--'})
+export const bem = withNaming({ e: '__', m: '--' });
+
+export function getTotalCost(arrOfItems) {
+  return arrOfItems.reduce((totalCost, oneItem) => {
+    return totalCost + oneItem.count * oneItem.price;
+  }, 0);
+}
