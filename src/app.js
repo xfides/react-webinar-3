@@ -3,9 +3,8 @@ import List from './components/list';
 import Controls from './components/controls';
 import Head from './components/head';
 import PageLayout from './components/page-layout';
-import { PT_CART, PT_MODAL, PT_ONE_GOOD } from './propTypesShare';
-import PropTypes from 'prop-types';
 import Modal from './components/modal';
+import Cart from './components/cart';
 
 /**
  * Приложение
@@ -21,8 +20,9 @@ function App({ store }) {
       <Head title="Приложение на чистом JS" />
       <Controls cart={cart} />
       <List list={list} />
+      {/*<Modal title="Корзина" modal={{isOpen:true}}>*/}
       <Modal title="Корзина" modal={modal}>
-        Тело модалки
+        <Cart cart={cart} />
       </Modal>
     </PageLayout>
   );
@@ -30,6 +30,9 @@ function App({ store }) {
 
 // DO NOT WORK! Maybe bug in React or Webpack or PropTypes
 /*
+import { PT_CART, PT_MODAL, PT_ONE_GOOD } from './propTypesShare';
+import PropTypes from 'prop-types';
+
 App.propTypes = PropTypes.shape({
   store: PropTypes.shape({
     state: PropTypes.shape({
