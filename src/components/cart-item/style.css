@@ -17,6 +17,11 @@
   margin-left: auto;
 }
 
+.CartItem__count {
+  padding: 20px 25px 20px 80px;
+  text-align: right;
+}
+
 .CartItem__actions {
   display: flex;
   justify-content: flex-end;

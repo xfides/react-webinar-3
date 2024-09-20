@@ -18,7 +18,7 @@ function CartItem({ cartItem }) {
       <div className={cn('code')}>{code}</div>
       <div className={cn('title')}>{title}</div>
       <div className={cn('price')}>{price}</div>
-      <div className={cn('count')}>{count}</div>
+      <div className={cn('count')}>{count} шт</div>
       <div className={cn('actions')}>
         <button onClick={removeGoodFromCart}>Удалить</button>
       </div>

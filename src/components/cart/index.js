@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './style.css';
 import { bem, getTotalCost } from '../../utils';
 import { ACTION } from '../../store';
@@ -21,9 +20,9 @@ function Cart({ cart }) {
           <CartItem cartItem={cartItem} />
         </div>
       ))}
-      <div>
+      <div className={cn('total')}>
         <strong>Итого</strong>
-        <strong>{totalCost}</strong>
+        <strong>{totalCost} Р</strong>
       </div>
     </div>
   );
