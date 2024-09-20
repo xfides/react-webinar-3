@@ -6,7 +6,7 @@ import CartItem from '../cart-item';
 import { PT_CART } from '../../propTypesShare';
 
 function Cart({ cart }) {
-  if (Object.values(cart).length === 0) return 'Нет выбранных товаров';
+  if (Object.values(cart).length === 0) return null;
 
   const cartInfo = ACTION.buildCartInfo();
   const totalCost = getTotalCost(cartInfo);
