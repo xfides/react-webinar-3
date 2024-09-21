@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { bem } from '../../utils';
 import { PT_MODAL } from '../../propTypesShare';
-import { createPortal } from 'react-dom';
 import { ACTION } from '../../store';
 
 function useEscClose({ isOpen }) {
@@ -25,7 +24,7 @@ function Modal({ title, modal, children }) {
 
   const cn = bem('Modal');
 
-  return createPortal(
+  return (
     <div className={cn({ opened: modal.isOpen })} onClick={ACTION.toggleModal}>
       <div
         className={cn('inner', { opened: modal.isOpen })}
@@ -40,8 +39,7 @@ function Modal({ title, modal, children }) {
 
         <div className={cn('content')}>{children}</div>
       </div>
-    </div>,
-    document.body,
+    </div>
   );
 }
 
