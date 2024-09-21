@@ -22,6 +22,14 @@ function useEscClose({ isOpen }) {
 function Modal({ title, modal, children }) {
   useEscClose(modal);
 
+  useEffect(()=>{
+    if(modal.isOpen){
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [modal])
+
   const cn = bem('Modal');
 
   return (
