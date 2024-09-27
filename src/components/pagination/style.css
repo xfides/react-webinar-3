@@ -1,0 +1,60 @@
+.Pagination * {
+  /*outline: 1px solid red;*/
+}
+
+.Pagination {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.Pagination-list {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  justify-content: right;
+}
+
+.Pagination-item {
+  min-width: 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+  outline: 1px solid transparent;
+  transition: outline-color 0.2s;
+  box-sizing: border-box;
+  color: #CCCCCC;
+}
+
+.Pagination-item_link:hover,
+.Pagination-item_link:focus {
+  outline: 1px solid #0087E9;
+}
+
+.Pagination-item_active {
+  background: #0087E9;
+  color: #fff;
+}
+
+.Pagination-item > * {
+  padding-left: 2px;
+  padding-right: 2px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.Pagination-item a {
+  color: #000;
+}
+
+.Pagination-item a:active,
+.Pagination-item a:hover,
+.Pagination-item a:focus {
+  color: #0087E9;
+}
+
+
+
+
+
+
