@@ -18,6 +18,7 @@ function Main() {
     list: state.catalog.list,
     amount: state.basket.amount,
     sum: state.basket.sum,
+    pagination: state.pagination,
   }));
 
   const callbacks = {
@@ -41,6 +42,7 @@ function Main() {
       <Head title="Магазин" />
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount} sum={select.sum} />
       <List list={select.list} renderItem={renders.item} />
+      <Pagination pagination={select.pagination} />
     </PageLayout>
   );
 }
