@@ -1,0 +1,18 @@
+.Error {
+  padding: 20px;
+}
+
+.Error-block {
+  margin-bottom: 40px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.Error-block:last-of-type {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.Error-wrapLink {
+  text-align: center;
+}
+

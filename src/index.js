@@ -5,6 +5,7 @@ import { StoreContext } from './store/context';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Main, { MainLoader } from './app/main'
 import Product, { ProductLoader } from './app/product'
+import Error from './components/error'
 
 const store = new Store();
 
@@ -18,15 +19,16 @@ const router = createBrowserRouter([
       {
         path: '/main/:pageNum?',
         element: <Main />,
-        loader: MainLoader
+        loader: MainLoader,
       },
       {
         path: '/product/:id',
         element: <Product />,
-        loader: ProductLoader
+        loader: ProductLoader,
       },
     ],
   },
+  { path: '*', element: <Error/> },
 ]);
 
 // Первый рендер приложения
