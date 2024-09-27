@@ -6,8 +6,17 @@ import BasketTool from '../../components/basket-tool';
 import List from '../../components/list';
 import useStore from '../../store/use-store';
 import useSelector from '../../store/use-selector';
+import Pagination from '../../components/pagination';
+
+export function MainLoader() {
+  console.log('MainLoader');
+
+  return null;
+}
 
 function Main() {
+  console.log('Main component');
+
   const store = useStore();
 
   useEffect(() => {
