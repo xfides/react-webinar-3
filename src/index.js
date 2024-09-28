@@ -3,9 +3,9 @@ import App from './app';
 import Store from './store';
 import { StoreContext } from './store/context';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import Main, { MainLoader } from './app/main'
-import Product, { ProductLoader } from './app/product'
-import Error from './components/error'
+import Main, { MainLoader } from './app/main';
+import Product, { ProductLoader } from './app/product';
+import Error from './components/error';
 
 const store = new Store();
 
@@ -15,6 +15,7 @@ const router = createBrowserRouter([
   { path: '/', element: <Navigate to={'/main'} /> },
   {
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: '/main/:pageNum?',
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: '*', element: <Error/> },
+  { path: '*', element: <Error /> },
 ]);
 
 // Первый рендер приложения
