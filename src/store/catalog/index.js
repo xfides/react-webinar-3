@@ -1,10 +1,8 @@
-import { codeGenerator } from '../../utils';
 import StoreModule from '../module';
 
 class Catalog extends StoreModule {
   constructor(store, name) {
     super(store, name);
-    this.generateCode = codeGenerator(0);
   }
 
   initState() {
@@ -13,15 +11,13 @@ class Catalog extends StoreModule {
     };
   }
 
-  async load() {
-    const response = await fetch('/api/v1/articles');
-    const json = await response.json();
+  setData(newList) {
     this.setState(
       {
         ...this.getState(),
-        list: json.result.items,
+        list: newList,
       },
-      'Загружены товары из АПИ',
+      'Установлены товары напрямую',
     );
   }
 }
