@@ -44,6 +44,7 @@ class Store {
   /**
    * Установка состояния
    * @param newState {Object}
+   * @param description {String}
    */
   setState(newState, description = 'setState') {
     console.group(
