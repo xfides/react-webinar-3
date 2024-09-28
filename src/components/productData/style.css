@@ -1,0 +1,35 @@
+.ProductData {
+  padding: 20px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.ProductData-block {
+  margin-bottom: 20px;
+}
+
+.ProductData-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.ProductData-block_description {
+}
+
+.ProductData-block_country {
+}
+
+.ProductData-block_category {
+}
+
+.ProductData-block_year {
+}
+
+.ProductData-block_price {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.ProductData-block_control button {
+  cursor: pointer;
+}
