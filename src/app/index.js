@@ -1,7 +1,6 @@
-import Main from './main';
 import Basket from './basket';
 import useSelector from '../store/use-selector';
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 /**
  * Приложение
@@ -12,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Outlet/>
+      <Outlet />
       {activeModal === 'basket' && <Basket />}
     </>
   );
