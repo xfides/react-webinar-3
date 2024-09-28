@@ -2,6 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 function validatePaginationData({ limit, pageIndex, dataCount, minIndex, maxIndex }) {
   return (
@@ -71,7 +72,7 @@ function createPaginationItems(paginationModel, cn) {
     if (oneModelItem.link) {
       return (
         <li className={cn('item', { link: true })} key={oneModelItem.key}>
-          <a href="#">{oneModelItem.content}</a>
+          <Link to={`/main/${oneModelItem.key}`}>{oneModelItem.content}</Link>
         </li>
       );
     }
