@@ -7,21 +7,35 @@ import List from '../../components/list';
 import useStore from '../../store/use-store';
 import useSelector from '../../store/use-selector';
 import Pagination from '../../components/pagination';
+import { getItemsPerPageIndex } from '../../api';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Spinner from '../../components/spinner';
 
-export function MainLoader() {
-  console.log('MainLoader');
+export async function MainLoader({ params }) {
+  const pageNum = params.pageNum ?? 0;
 
-  return null;
+  const responseData = await getItemsPerPageIndex(pageNum);
+
+  if (responseData.error) {
+    throw new Error(responseData.error.message);
+  }
+
+  responseData.result.pageNum = Number(pageNum);
+  return responseData.result;
 }
 
 function Main() {
-  console.log('Main component');
-
+  const { count = 0, items = [], pageNum = 0 } = useLoaderData();
+  const navigation = useNavigation();
   const store = useStore();
 
   useEffect(() => {
-    store.actions.catalog.load();
-  }, []);
+    store.actions.catalog.setData(items);
+    store.actions.pagination.updatePagination({
+      pageIndex: pageNum,
+      dataCount: count,
+    });
+  }, [items, pageNum, count]);
 
   const select = useSelector(state => ({
     list: state.catalog.list,
@@ -52,6 +66,7 @@ function Main() {
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount} sum={select.sum} />
       <List list={select.list} renderItem={renders.item} />
       <Pagination pagination={select.pagination} />
+      {navigation.state === 'loading' && <Spinner />}
     </PageLayout>
   );
 }
