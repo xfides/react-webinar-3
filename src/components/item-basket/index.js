@@ -4,21 +4,41 @@ import { numberFormat } from '../../utils';
 import { cn as bem } from '@bem-react/classname';
 import PropTypes from 'prop-types';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 function ItemBasket(props) {
+  const onRemove = props.onRemove ?? (() => {});
+  const closeModal = props.onClose ?? (() => {});
+  const item = props.item;
+
   const cn = bem('ItemBasket');
 
+  const navigate = useNavigate();
+  const handleProductTitleClick = useCallback(
+    e => {
+      e.preventDefault();
+      closeModal();
+      navigate(`/product/${item._id}`, { replace: true });
+    },
+    [navigate, item],
+  );
+
   const callbacks = {
-    onRemove: e => props.onRemove(props.item._id),
+    onRemove: _ => onRemove(item._id),
+    handleProductTitleClick: handleProductTitleClick,
   };
 
   return (
     <div className={cn()}>
-      {/*<div className={cn('code')}>{props.item._id}</div>*/}
-      <div className={cn('title')}>{props.item.title}</div>
+      {/*<div className={cn('code')}>{item._id}</div>*/}
+      <div className={cn('title')}>
+        <a href={`/product/${item._id}`} onClick={callbacks.handleProductTitleClick}>
+          {item.title}
+        </a>
+      </div>
       <div className={cn('right')}>
-        <div className={cn('cell')}>{numberFormat(props.item.price)} ₽</div>
-        <div className={cn('cell')}>{numberFormat(props.item.amount || 0)} шт</div>
+        <div className={cn('cell')}>{numberFormat(item.price)} ₽</div>
+        <div className={cn('cell')}>{numberFormat(item.amount || 0)} шт</div>
         <div className={cn('cell')}>
           <button onClick={callbacks.onRemove}>Удалить</button>
         </div>
@@ -35,10 +55,7 @@ ItemBasket.propTypes = {
     amount: PropTypes.number,
   }).isRequired,
   onRemove: propTypes.func,
-};
-
-ItemBasket.defaultProps = {
-  onRemove: () => {},
+  onClose: propTypes.func,
 };
 
 export default memo(ItemBasket);
