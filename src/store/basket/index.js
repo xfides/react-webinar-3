@@ -1,4 +1,5 @@
 import StoreModule from '../module';
+import { getItemById } from '../../api';
 
 class Basket extends StoreModule {
   initState() {
@@ -30,10 +31,27 @@ class Basket extends StoreModule {
     if (!exist) {
       // Поиск товара в каталоге, чтобы его добавить в корзину.
       // @todo В реальном приложении будет запрос к АПИ вместо поиска по состоянию.
-      const item = this.store.getState().catalog.list.find(item => item._id === _id);
-      list.push({ ...item, amount: 1 }); // list уже новый, в него можно пушить.
-      // Добавляем к сумме.
-      sum += item.price;
+      // @todo Закрыл по быстрячку, чтобы товары добавлялись в корзину, когда пользователь открыл товар напрямую по ссылку, а не с Главной
+      getItemById(_id)
+        .then(data => {
+          const item = data.result;
+          // list уже новый, в него можно пушить.
+          list.push({ ...item, amount: 1 });
+          // Добавляем к сумме.
+          sum += item.price;
+
+          this.setState(
+            {
+              ...this.getState(),
+              list,
+              sum,
+              amount: list.length,
+            },
+            'Добавление в корзину',
+          );
+        })
+        .catch(() => {});
+      return;
     }
 
     this.setState(
