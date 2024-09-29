@@ -12,30 +12,31 @@ import { useLoaderData, useNavigation } from 'react-router-dom';
 import Spinner from '../../components/spinner';
 
 export async function MainLoader({ params }) {
-  const pageNum = params.pageNum ?? 0;
+  const userPageNum = params.userPageNum ?? 1;
+  const indexPageNum = userPageNum - 1;
 
-  const responseData = await getItemsPerPageIndex(pageNum);
+  const responseData = await getItemsPerPageIndex(indexPageNum);
 
   if (responseData.error) {
     throw new Error(responseData.error.message);
   }
 
-  responseData.result.pageNum = Number(pageNum);
+  responseData.result.userPageNum = Number(userPageNum);
   return responseData.result;
 }
 
 function Main() {
-  const { count = 0, items = [], pageNum = 0 } = useLoaderData();
+  const { count = 0, items = [], userPageNum = 1 } = useLoaderData();
   const navigation = useNavigation();
   const store = useStore();
 
   useEffect(() => {
     store.actions.catalog.setData(items);
     store.actions.pagination.updatePagination({
-      pageIndex: pageNum,
+      userPageNum: userPageNum,
       dataCount: count,
     });
-  }, [items, pageNum, count]);
+  }, [items, userPageNum, count]);
 
   const select = useSelector(state => ({
     list: state.catalog.list,

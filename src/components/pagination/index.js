@@ -4,13 +4,13 @@ import { cn as bem } from '@bem-react/classname';
 import './style.css';
 import { Link } from 'react-router-dom';
 
-function validatePaginationData({ limit, pageIndex, dataCount, minIndex, maxIndex }) {
+function validatePaginationData({ limit, userPageNum, dataCount, minUserPageNum, maxUserPageNum }) {
   return (
     limit !== 0 &&
     dataCount !== 0 &&
     limit < dataCount &&
-    pageIndex >= minIndex &&
-    pageIndex <= maxIndex
+    userPageNum >= minUserPageNum &&
+    userPageNum <= maxUserPageNum
   );
 }
 
@@ -18,39 +18,35 @@ function compressPaginationModel(paginationModel) {
   let prevItemContent = null;
 
   return paginationModel.filter(oneItem => {
-    if (oneItem.content === prevItemContent) {
-      prevItemContent = oneItem.content;
-      return false;
-    } else {
-      prevItemContent = oneItem.content;
-      return true;
-    }
+    const isDuplicate = oneItem.content === prevItemContent;
+    prevItemContent = oneItem.content;
+    return !isDuplicate;
   });
 }
 
-function createPaginationModel({ limit = 0, pageIndex = 0, dataCount = 0 }) {
+function createPaginationModel({ limit = 0, userPageNum = 1, dataCount = 0 }) {
   const paginationModel = [];
-  const minIndex = 0;
-  const maxIndex = Math.ceil(dataCount / limit) - 1;
+  const minUserPageNum = 1;
+  const maxUserPageNum = Math.ceil(dataCount / limit);
   const noLinkOffsetABS = 1;
 
-  if (!validatePaginationData({ limit, pageIndex, dataCount, minIndex, maxIndex })) {
+  if (!validatePaginationData({ limit, userPageNum, dataCount, minUserPageNum, maxUserPageNum })) {
     return paginationModel;
   }
 
-  for (let i = minIndex; i <= maxIndex; i++) {
-    if (i === pageIndex) {
-      paginationModel.push({ active: true, link: false, content: i + 1, key: i });
+  for (let i = minUserPageNum; i <= maxUserPageNum; i++) {
+    if (i === userPageNum) {
+      paginationModel.push({ active: true, link: false, content: i, key: i });
       continue;
     }
 
-    if (i === minIndex || i === maxIndex) {
-      paginationModel.push({ active: false, link: true, content: i + 1, key: i });
+    if (i === minUserPageNum || i === maxUserPageNum) {
+      paginationModel.push({ active: false, link: true, content: i, key: i });
       continue;
     }
 
-    if (i >= pageIndex - noLinkOffsetABS && i <= pageIndex + noLinkOffsetABS) {
-      paginationModel.push({ active: false, link: true, content: i + 1, key: i });
+    if (i >= userPageNum - noLinkOffsetABS && i <= userPageNum + noLinkOffsetABS) {
+      paginationModel.push({ active: false, link: true, content: i, key: i });
     } else {
       paginationModel.push({ active: false, link: false, content: '...', key: i });
     }
@@ -72,7 +68,7 @@ function createPaginationItems(paginationModel, cn) {
     if (oneModelItem.link) {
       return (
         <li className={cn('item', { link: true })} key={oneModelItem.key}>
-          <Link to={`/main/${oneModelItem.key}`}>{oneModelItem.content}</Link>
+          <Link to={`/main/${oneModelItem.content}`}>{oneModelItem.content}</Link>
         </li>
       );
     }
@@ -104,7 +100,7 @@ function Pagination({ pagination } = {}) {
 Pagination.propTypes = {
   pagination: PropTypes.shape({
     limit: PropTypes.number,
-    pageIndex: PropTypes.number,
+    userPageNum: PropTypes.number,
     dataCount: PropTypes.number,
   }),
 };

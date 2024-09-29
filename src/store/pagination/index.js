@@ -4,7 +4,7 @@ class Pagination extends StoreModule {
   initState() {
     return {
       limit: 0,
-      pageIndex: 0,
+      userPageNum: 1,
       dataCount: 0,
     };
   }

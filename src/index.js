@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: '/main/:pageNum?',
+        path: '/main/:userPageNum?',
         element: <Main />,
         loader: MainLoader,
       },
