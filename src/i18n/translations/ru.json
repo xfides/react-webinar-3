@@ -16,5 +16,12 @@
     "few": "товара",
     "many": "товаров",
     "other": "товара"
-  }
+  },
+  "login": "Вход",
+  "logout": "Выход",
+  "loginLabel": "Логин",
+  "passwordLabel": "Пароль",
+  "submitLabel": "Войти",
+  "authentication": "Аутентификация",
+  "profile": "Профиль"
 }
