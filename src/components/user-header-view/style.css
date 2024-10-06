@@ -1,0 +1,28 @@
+.UserHeaderView {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.UserHeaderView-block {
+  margin-left: 20px;
+}
+
+.UserHeaderView-block:first-of-type {
+  margin-left: 0;
+}
+
+.UserHeaderView-block_wrapLinks * {
+  color: #0087E9;
+}
+
+.UserHeaderView-block_wrapButtons {
+
+}
+
+.UserHeaderView-button {
+
+}
