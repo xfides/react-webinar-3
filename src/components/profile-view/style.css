@@ -1,0 +1,43 @@
+.ProfileView {
+  padding: 20px;
+  color: #000;
+}
+
+.ProfileView-caption {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.ProfileView-list {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.ProfileView-item {
+  padding-bottom: 20px;
+}
+
+.ProfileView-item_error {
+  color: #F00;
+}
+
+.ProfileView-item:last-of-type {
+  padding-bottom: 0;
+}
+
+
+.ProfileView-itemLabel {
+
+}
+
+.ProfileView-itemValue {
+  font-weight: 700;
+}
+
+
