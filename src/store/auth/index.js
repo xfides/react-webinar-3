@@ -17,8 +17,6 @@ class AuthState extends StoreModule {
   }
 
   async signOut() {
-    console.log(`signOut`);
-
     this.setState({ ...this.getState(), waiting: true }, 'auth sign out / start request');
 
     try {
