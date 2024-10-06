@@ -1,0 +1,37 @@
+.AuthForm {
+  padding: 20px;
+  color: #000;
+}
+
+.AuthForm-caption {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.AuthForm-body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.AuthForm-block {
+  padding-bottom: 20px;
+}
+
+.AuthForm-block:last-of-type {
+  padding-bottom: 0;
+}
+
+.AuthForm-block label {
+  display: block;
+}
+
+.AuthForm-block_error {
+  color: #FF0000;
+}
+
+.AuthForm-block_wrapButtons, .AuthForm-block_wrapButtons button {
+  font-size: 13px;
+  line-height: 15px;
+}
