@@ -1,0 +1,42 @@
+.FormComment {
+  color: #000;
+  font-weight: 400;
+}
+
+.FormComment-caption {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.FormComment-main {
+
+}
+
+.FormComment-textarea {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  resize: none;
+  font-size: 14px;
+  line-height: 16px;
+  box-sizing: border-box;
+  padding: 4px 5px;
+  margin: 0;
+}
+
+.FormComment-controls {
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.FormComment-controls button {
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.FormComment-controls button:last-of-type {
+  margin-right: 0;
+}
