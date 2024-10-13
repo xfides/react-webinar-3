@@ -1,0 +1,45 @@
+.ItemComment {
+
+}
+
+.ItemComment-base {
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 30px;
+}
+
+.ItemComment-header {
+
+}
+
+.ItemComment-userName {
+  font-weight: 700;
+  color: #000;
+  margin-right: 10px;
+}
+
+.ItemComment-date {
+  font-weight: 400;
+  color: #666666;
+}
+
+.ItemComment-main {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ItemComment-footer button {
+  cursor: pointer;
+  color: #0087E9;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.ItemComment-extra {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 400;
+}
