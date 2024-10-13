@@ -1,0 +1,36 @@
+.ListComments {
+  padding: 10px 40px;
+  color: #000;
+}
+
+.ListComments .error {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  color: #ff0000;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.ListComments-header {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.ListComments-list {
+}
+
+.ListComments-item {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ListComments-extra {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
